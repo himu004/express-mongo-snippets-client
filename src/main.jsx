@@ -11,6 +11,7 @@ import Home from './pages/Home/Home.jsx';
 import UserManagement from './pages/UserManagement/UserManagement.jsx';
 import SimpleCrud from './pages/SimpleCrud/SimpleCrud.jsx';
 import Users from './components/Users.jsx';
+import Edit from './components/Edit.jsx';
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,11 @@ const router = createBrowserRouter([
         path: "/users",
         element: <Users/>,
         loader: () => fetch('http://localhost:5000/crudusers')
+      },
+      {
+        path: "/update/:id",
+        element: <Edit/>,
+        loader: ({params}) => fetch(`http://localhost:5000/crudusers/${params.id}`)
       }
     ]
   },
